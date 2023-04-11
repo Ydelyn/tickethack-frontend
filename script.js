@@ -1,6 +1,6 @@
 document.querySelector('#input-date').value = moment().format('YYYY-MM-DD');
 
-//Chercher de billets de train
+//Chercher des billets de train et en sélectionner un
 document.querySelector('#input-submit').addEventListener('click', function(){
     let departure = document.querySelector('#input-departure').value;
     departure = departure.charAt(0).toUpperCase() + departure.slice(1);
@@ -22,14 +22,38 @@ document.querySelector('#input-submit').addEventListener('click', function(){
         })
         .then(resp => resp.json())
         .then(data => {
-            document.querySelector('#result').innerHTML = ''
-            for(trip of data.trips){
-                document.querySelector('#result').innerHTML +=`
-                <div class="flex"><p>${trip.departure} > ${trip.arrival}</p><p>${moment(trip.date).format('LT')}</p></p><p>${trip.price}€</p><input type="button" value="Book" class="book rounded text-white bg-[#4FAA91]"></div>
-                `
-            }
-            
-            
+            if(data.trips.length === 0){
+                document.querySelector('#result').firstElementChild.src = "./img/notfound.png"
+                document.querySelector('#result').lastElementChild.textContent = "No trip found." 
+            }else{
+                document.querySelector('#result').innerHTML = ''
+                for(trip of data.trips){
+                    document.querySelector('#result').innerHTML +=`
+                    <div class="flex"><p style="display:none">${trip.date}</p><p>${trip.departure}</p><p>></p><p>${trip.arrival}</p><p data-locale="fr">${moment(trip.date).format('HH:mm')}</p></p><p>${trip.price}€</p><input type="button" value="Book" class="cart rounded text-white bg-[#4FAA91]"></div>
+                    `
+                }
+                const select = document.querySelectorAll('.cart')
+                for(button of select){
+                    button.addEventListener('click', function(){
+                        const date = this.parentNode.firstElementChild.textContent
+                        const departure = this.parentNode.firstElementChild.nextElementSibling.textContent
+                        const arrival = this.parentNode.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.textContent
+                        fetch('https://tickethack-backend-sigma.vercel.app/trips/select', {
+                            method: "POST",
+                            headers: {"Content-Type": "application/json"},
+                            body: JSON.stringify({
+                                departure, 
+                                arrival, 
+                                date
+                            })
+                        })
+                        .then(resp => resp.json())
+                        .then(data => {
+                            window.location.assign('cart.html')
+                        })
+                    })
+                }
+            } 
         })
     }    
 })
