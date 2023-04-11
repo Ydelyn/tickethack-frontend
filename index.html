@@ -15,33 +15,33 @@
 </head>
 
 <body class="bg-[url('./img/background.jpg')] bg-cover h-screen bg-no-repeat bg-center font-['Source_Sans_Pro']">
-    <header class="bg-white flex justify-between py-4 px-8">
+    <header class="bg-white md:flex md:justify-between py-4 px-8 text-center">
         <a href="index.html"><h1 class="text-[#4FAA91] font-bold text-2xl">Tickethack</h1></a>
         <nav>
-            <ul class="flex">
+            <ul class="flex justify-around mt-2 md:mt-0">
                 <a href="cart.html"><li class="mr-2 font-semibold text-lg">Cart</li></a>
                 <a href="booking.html"><li class="ml-2 font-semibold text-lg">Bookings</li></a>
             </ul>
         </nav>
     </header>
-    <main>
+    <main class="h-3/4">
         <div id="titles" class="text-center m-8">
-            <h2 class="text-white font-semibold text-4xl m-4">Explore the world effortlessly by train !</h2>
-            <p class="text-white text-xl font-light">Compare, book and enjoy cheap prices for train tickets: your journey starts on Tickethack.</p>
+            <h2 class="text-white font-semibold md:text-4xl text-2xl m-4">Explore the world effortlessly by train !</h2>
+            <p class="text-white text-xl font-light hidden md:block">Compare, book and enjoy cheap prices for train tickets: your journey starts on Tickethack.</p>
         </div>
-        <div class="flex justify-between w-1/2 m-auto">
-            <div id="search" class="bg-white m-4 shadow p-4  rounded-lg w-1/2">
+        <div class="lg:flex lg:justify-between lg:w-3/4 m-auto">
+            <div id="search" class="bg-white lg:m-6 shadow p-6 rounded-lg md:w-3/4 md:mx-auto mx-4 my-6">
                 <form action="" method="get" class="h-full relative">
                     <input type="text" class="bg-slate-200 w-full p-2 rounded-t-md border-b-2 border-solid border-slate-300" id="input-departure" placeholder="Departure">
                     <input type="text" class="bg-slate-200 w-full p-2 rounded-b-md" id="input-arrival" placeholder="Arrival">
                     <input type="date" class="bg-slate-200 w-full p-2 rounded-md mt-4" value="" id="input-date">
-                    <input type="button" value="Search" class="w-full p-2 rounded text-white bg-[#4FAA91] absolute bottom-0 left-0" id="input-submit">
+                    <input type="button" value="Search" class="w-full p-2 mt-4 rounded text-white bg-[#4FAA91] lg:absolute lg:bottom-0 lg:left-0" id="input-submit">
                 </form>
             </div>
-            <div id="result" class="bg-white m-4 shadow p-4 text-center rounded-lg w-1/2">
-                <img src="./img/train.png" alt="Image de train">
-                <hr>
-                <p>It’s time to book your future trip.</p>
+            <div id="result" class="bg-white lg:m-6 shadow p-6 text-center rounded-lg md:w-3/4 md:mx-auto mx-4 my-6">
+                <img src="./img/train.png" alt="Image de train" class="m-auto w-1/2">
+                <hr class="w-3/4 mx-auto my-6 h-0.5 bg-[#4FAA91]">
+                <p class="">It’s time to book your future trip.</p>
             </div>
         </div>
     </main>
