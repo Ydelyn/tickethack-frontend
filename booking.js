@@ -12,7 +12,7 @@ fetch('https://tickethack-backend-sigma.vercel.app/trips/book', { method: "GET" 
             if(departure.includes('ago')){ departure = 'Already departed' }
 
             document.querySelector('#cart').innerHTML += `
-            <div class="flex">
+            <div class="grid grid-cols-6 grid-cols-[1fr_0.5fr_1fr_2fr_2fr_4fr] grid-rows-1 bg-slate-200 rounded-lg p-2 my-3 mx-6">
                 <p>${trip.departure}</p>
                 <p>></p>
                 <p>${trip.arrival}</p>
