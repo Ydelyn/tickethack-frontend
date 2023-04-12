@@ -8,7 +8,7 @@ fetch('https://tickethack-backend-sigma.vercel.app/trips/select', { method: "GET
             <h3>My cart</h3>`
         for(trip of data.trips){
             document.querySelector('#cart').innerHTML += `
-            <div class="grid grid-cols-6 grid-cols-[1fr_0.5fr_1fr_2fr_2fr_0.5fr] grid-rows-1 bg-slate-200 rounded-lg p-2 my-3 mx-6">
+            <div class="grid grid-cols-6 grid-cols-[1fr_0.5fr_1fr_2fr_2fr_0.5fr] grid-rows-1 bg-[#F6EEEF] rounded-lg p-2 my-3 mx-6">
                 <p style="display:none">${trip.date}</p>
                 <p>${trip.departure}</p>
                 <p>></p>
