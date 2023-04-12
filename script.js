@@ -29,7 +29,15 @@ document.querySelector('#input-submit').addEventListener('click', function(){
                 document.querySelector('#result').innerHTML = ''
                 for(trip of data.trips){
                     document.querySelector('#result').innerHTML +=`
-                    <div class="flex"><p style="display:none">${trip.date}</p><p>${trip.departure}</p><p>></p><p>${trip.arrival}</p><p data-locale="fr">${moment(trip.date).format('HH:mm')}</p></p><p>${trip.price}€</p><input type="button" value="Book" class="cart rounded text-white bg-[#4FAA91]"></div>
+                    <div class="flex">
+                        <p style="display:none">${trip.date}</p>
+                        <p>${trip.departure}</p>
+                        <p>></p>
+                        <p>${trip.arrival}</p>
+                        <p data-locale="fr">${moment(trip.date).format('HH:mm')}</p>
+                        <p>${trip.price}€</p>
+                        <input type="button" value="Book" class="cart rounded text-white bg-[#4FAA91]">
+                    </div>
                     `
                 }
                 const select = document.querySelectorAll('.cart')
