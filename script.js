@@ -22,14 +22,14 @@ document.querySelector('#input-submit').addEventListener('click', function(){
         })
         .then(resp => resp.json())
         .then(data => {
+            document.querySelector('#result').innerHTML = ''
             if(data.trips.length === 0){
                 document.querySelector('#result').firstElementChild.src = "./img/notfound.png"
                 document.querySelector('#result').lastElementChild.textContent = "No trip found." 
             }else{
-                document.querySelector('#result').innerHTML = ''
                 for(trip of data.trips){
                     document.querySelector('#result').innerHTML +=`
-                    <div class="flex justify-between bg-zinc-400 p-2 m-1 rounded-lg">
+                    <div class="grid grid-cols-6 grid-rows-1 bg-slate-200 p-2 my-3 rounded-lg text-center">
                         <p style="display:none">${trip.date}</p>
                         <p>${trip.departure}</p>
                         <p class="mx-1">></p>
