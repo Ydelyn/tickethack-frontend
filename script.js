@@ -1,6 +1,6 @@
 document.querySelector('#input-date').value = moment().format('YYYY-MM-DD');
 
-//Chercher des billets de train et en sélectionner un
+//Chercher des billets de train et en sélectionner un...
 document.querySelector('#input-submit').addEventListener('click', function(){
     let departure = document.querySelector('#input-departure').value;
     departure = departure.charAt(0).toUpperCase() + departure.slice(1);
@@ -10,6 +10,7 @@ document.querySelector('#input-submit').addEventListener('click', function(){
 
     let date = document.querySelector('#input-date').value;
 
+    ///Search trip
     if(Boolean(departure) && Boolean(arrival) && Boolean(date)){
         fetch('https://tickethack-backend-sigma.vercel.app/trips/search', {
             method: "POST",
@@ -39,9 +40,10 @@ document.querySelector('#input-submit').addEventListener('click', function(){
                         <p data-locale="fr">${moment(trip.date).format('HH:mm')}</p>
                         <p>${trip.price}€</p>
                         <input type="button" value="Book" class="cart rounded text-white bg-[#4FAA91] p-1">
-                    </div>
-                    `
+                    </div>`
                 }
+
+                //select à trip
                 const select = document.querySelectorAll('.cart')
                 for(button of select){
                     button.addEventListener('click', function(){
