@@ -31,14 +31,14 @@ document.querySelector('#input-submit').addEventListener('click', function(){
             }else{
                 for(trip of data.trips){
                     document.querySelector('#result').innerHTML +=`
-                    <div class="flex">
+                    <div class="flex justify-between bg-zinc-400 p-2 m-1 rounded-lg">
                         <p style="display:none">${trip.date}</p>
                         <p>${trip.departure}</p>
-                        <p>></p>
-                        <p>${trip.arrival}</p>
-                        <p data-locale="fr">${moment(trip.date).format('HH:mm')}</p>
-                        <p>${trip.price}€</p>
-                        <input type="button" value="Book" class="cart rounded text-white bg-[#4FAA91]">
+                        <p class="mx-1">></p>
+                        <p class="mx-1">${trip.arrival}</p>
+                        <p data-locale="fr" class="mx-1">${moment(trip.date).format('HH:mm')}</p>
+                        <p class="mx-1">${trip.price}€</p>
+                        <input type="button" value="Book" class="cart rounded text-white bg-[#4FAA91] mx-1 p-1">
                     </div>
                     `
                 }
