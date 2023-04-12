@@ -24,8 +24,10 @@ document.querySelector('#input-submit').addEventListener('click', function(){
         .then(data => {
             document.querySelector('#result').innerHTML = ''
             if(data.trips.length === 0){
-                document.querySelector('#result').firstElementChild.src = "./img/notfound.png"
-                document.querySelector('#result').lastElementChild.textContent = "No trip found." 
+                document.querySelector('#result').innerHTML = `
+                <img src="./img/notfound.png" alt="Image de train" class="m-auto w-1/2">
+                <hr class="w-3/4 mx-auto my-6 h-0.5 bg-[#4FAA91]">
+                <p class="">No trip found.</p>`
             }else{
                 for(trip of data.trips){
                     document.querySelector('#result').innerHTML +=`

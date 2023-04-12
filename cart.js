@@ -6,7 +6,7 @@ fetch('https://tickethack-backend-sigma.vercel.app/trips/select', { method: "GET
     <div class="flex">
         <h3>My cart</h3> 
     </div>`
-    let total = 0;
+    //let total = 0;
     for(trip of data.trips){
         document.querySelector('#cart').innerHTML += `
         <div class="flex">
@@ -15,12 +15,18 @@ fetch('https://tickethack-backend-sigma.vercel.app/trips/select', { method: "GET
             <p>></p>
             <p>${trip.arrival}</p>
             <p data-locale="fr">${moment(trip.date).format('HH:mm')}</p>
-            <p>${trip.price}€</p>
+            <p class="price" >${trip.price}€</p>
             <input type="button" value="X" class="book rounded text-white bg-[#4FAA91]">
         </div>`
-        total += trip.price;
+        //total += trip.price;
     }
 
+    console.log( document.querySelectorAll('.price').textContent)
+
+    const prices = document.querySelectorAll('.price').textContent
+    for(price of prices){
+        console.log(prices.replace(/€/g, '')) 
+    }
     document.querySelector('#cart').innerHTML += `
     <div class="flex">
         <div>Total : ${total}€</div>
@@ -58,8 +64,6 @@ fetch('https://tickethack-backend-sigma.vercel.app/trips/select', { method: "GET
             .then(data => {
                 console.log(data)
                 this.parentNode.remove()
-
-
             })
         })
     }
