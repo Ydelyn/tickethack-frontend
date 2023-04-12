@@ -1,4 +1,6 @@
 document.querySelector('#input-date').value = moment().format('YYYY-MM-DD');
+document.querySelector('#input-date').min = moment().format('YYYY-MM-DD');
+
 
 //Chercher des billets de train et en sélectionner un...
 document.querySelector('#input-submit').addEventListener('click', function(){
@@ -60,7 +62,7 @@ document.querySelector('#input-submit').addEventListener('click', function(){
                             })
                         })
                         .then(resp => resp.json())
-                        .then(data => {
+                        .then(() => {
                             window.location.assign('cart.html')
                         })
                     })
