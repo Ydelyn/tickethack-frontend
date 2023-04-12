@@ -5,12 +5,10 @@ fetch('https://tickethack-backend-sigma.vercel.app/trips/select', { method: "GET
     console.log(data)
     if(data.trips.length != 0){
         document.querySelector('#cart').innerHTML = `
-        <div class="flex">
-            <h3>My cart</h3> 
-        </div>`
+            <h3>My cart</h3>`
         for(trip of data.trips){
             document.querySelector('#cart').innerHTML += `
-            <div class="flex">
+            <div class="grid grid-cols-6 grid-cols-[1fr_0.5fr_1fr_2fr_2fr_0.5fr] grid-rows-1 bg-slate-200 rounded-lg p-2 my-3 mx-6">
                 <p style="display:none">${trip.date}</p>
                 <p>${trip.departure}</p>
                 <p>></p>
@@ -31,9 +29,9 @@ fetch('https://tickethack-backend-sigma.vercel.app/trips/select', { method: "GET
     }
     if(total !== 0){
         document.querySelector('#cart').innerHTML += `
-        <div class="flex">
-            <div id="total" >Total : ${total}€</div>
-            <input type="button" value="Purchase" id="book" class="rounded text-white bg-[#4FAA91]"></input>
+        <div class="flex justify-between content-center px-6 py-4 bg-blue-950 rounded-b-md mt-6">
+            <div id="total" class="text-white">Total : ${total}€</div>
+            <input type="button" value="Purchase" id="book" class="rounded text-white bg-[#4FAA91] py-1 px-2"></input>
         </div>`
     }
     
